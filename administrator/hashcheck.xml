@@ -1,0 +1,93 @@
+<?xml version="1.0" encoding="utf-8"?>
+<extension type="component" version="3.0" method="upgrade">
+    <name>com_hashcheck</name>
+    <creationDate>2016-04-21</creationDate>
+    <license>GNU General Public License version 2 or later; see LICENSE.txt</license>
+    <author>Joomdev</author>
+    <authorEmail>info@joomdev.com</authorEmail>
+    <authorUrl>http://www.joomdev.com</authorUrl>
+    <version>1.0</version>
+    <description><![CDATA[<div style="font-weight:bold; color:black; text-align:left; margin:0px; padding:5px;float:left;width:75%">
+	<p></p>MD5 Hash Check is a basic Joomla Security tool for a little security checks over all your Joomla files. The Tool Scans and compares the the MD5 code of all your core Joomla files and listings any modified or missing files.</p>
+
+	<p></p>The extension is very useful while updating websites to newer Joomla versions or cleaning up infected websites.</p>
+
+	<p></p>Hashes for newer version's of Joomla will be added as they come along. Don't forget to update.</p>
+</div>
+<div><a href="https://www.joomdev.com/products/extensions/md5-hash-check" target="_blank"><img src="components/com_hashcheck/assets/images/md5logo.png" style="float:right;margin:0px 15px;width: 119px;"/></a></div>]]></description>
+    
+    
+    
+    <install> <!-- Runs on install -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/install.mysql.utf8.sql</file>
+        </sql>
+    </install>
+    <update> <!-- Runs on update -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/update.mysql.utf8.sql</file>
+        </sql>
+    </update>
+    <uninstall> <!-- Runs on uninstall -->
+        <sql>
+            <file driver="mysql" charset="utf8">sql/uninstall.mysql.utf8.sql</file>
+        </sql>
+    </uninstall>
+
+    <files folder="site">
+        <filename>index.html</filename>
+        <filename>hashcheck.php</filename>
+        <filename>controller.php</filename>
+        <filename>router.php</filename>
+        <folder>views</folder>		
+        <folder>models</folder>
+        <folder>controllers</folder>
+        <folder>helpers</folder>
+    </files>
+    <media destination="com_hashcheck" folder="media">
+        <folder>js</folder>
+        <folder>css</folder>
+    </media>
+    <languages folder="languages/site">
+        
+			<language tag="en-GB">en-GB/en-GB.com_hashcheck.ini</language>
+    </languages>
+    <administration>
+        <menu >COM_HASHCHECK</menu>        
+        <files folder="administrator">
+            <filename>ajax.php</filename>
+            <filename>access.xml</filename>
+            <filename>config.xml</filename>
+            <filename>controller.php</filename>
+            <filename>index.html</filename>
+            <filename>hashcheck.php</filename>
+            <folder>controllers</folder>
+            <folder>assets</folder>
+            <folder>helpers</folder>
+            <folder>models</folder>
+            <folder>sql</folder>
+            <folder>tables</folder>
+            <folder>views</folder>
+            <folder>hash</folder>
+        </files>
+        <languages folder="languages/administrator">
+            
+			<language tag="en-GB">en-GB/en-GB.com_hashcheck.ini</language>
+			<language tag="en-GB">en-GB/en-GB.com_hashcheck.sys.ini</language>
+        </languages>
+    </administration>
+    <config>
+        <fields name="params">
+            <fieldset name="component">
+                <field name="save_history" default="0" />
+            </fieldset>
+        </fields>
+    </config>
+    <plugins>
+        <plugin group="search" plugin="hashcheck"/>
+    </plugins>
+     <updateservers>
+		<server type="extension" name="com_hashcheck" priority="1">https://www.joomdev.com/extensionupdates/com_hashcheck.xml</server>
+	</updateservers>
+	
+</extension>

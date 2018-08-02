@@ -1,0 +1,24 @@
+/**
+ * @version    1.0
+ * @package    MD5 Hash Check
+ * @author     info@joomdev.com
+ * @copyright  2016 www.joomdev.com
+ * @license    GNU General Public License version 2 or later; see LICENSE.txt
+ */
+.table{
+    width: 100%;
+    margin-bottom: 18px;
+}
+
+.table tr{
+    border: none;
+}
+
+.table td, .table th{
+    padding: 8px;
+    line-height: 18px;
+    text-align: left;
+    vertical-align: top;
+    border: none;
+    border-top: 1px solid #ddd;
+}
