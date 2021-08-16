@@ -16,7 +16,7 @@ $count = getDirFile();
 $db = JFactory::getDbo();
 $sql = "UPDATE #__orgfile SET `status` = 0";
 $db->setQuery($sql);
-$db->query();
+$db->execute();
 $sql = "SELECT * FROM #__orgfile LIMIT 0,5";
 $session = JFactory::getSession();
 $session->set('fileseekpointer','0');
@@ -155,24 +155,23 @@ function getOrgFile(){
 	$db = JFactory::getDbo();
 	$sql = "TRUNCATE TABLE #__orgfile";
 	$db->setQuery($sql);
-	$db->query();
+	$db->execute();
 	$orig = array();
 	$txt = "INSERT INTO #__orgfile(`id`, `file`, `hash`, `status`) VALUES ";
 	$orig_c = file($path.'administrator/components/com_hashcheck/hash/'.JVERSION.'/hash.txt');
-	for($i=0,$n=count($orig_c);$i<$n;$i++){
+	for( $i=0, $n=count($orig_c); $i < $n; $i++ ){
 		$line = explode("\t", $orig_c[$i]);
-		if($i>0)
-		$txt .= ",('',".$db->quote($path . $line[0]).",".$db->quote(trim($line[1])).",'0')";
-		else{
-			$txt .= "('',".$db->quote($path . $line[0]).",".$db->quote(trim($line[1])).",'0')";
+		if($i>0) {
+			$txt .= ",($i,".$db->quote($path . $line[0]).",".$db->quote(trim($line[1])).",'0')";
+		} else{
+			$txt .= "($i,".$db->quote($path . $line[0]).",".$db->quote(trim($line[1])).",'0')";
 		}		
 	}	
 	$db->setQuery($txt);
-	$db->query();
+	$db->execute();
 	if(count($orig_c)>1){
 		return true;
-	}
-	else{
+	} else {
 		return false;
 	}
 	

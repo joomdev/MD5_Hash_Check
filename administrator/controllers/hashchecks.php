@@ -129,7 +129,7 @@ class HashcheckControllerHashchecks extends JControllerAdmin
 			$results = $db->loadAssocList();
 			$sql = "UPDATE #__orgfile SET `status` = 1 WHERE `file` IN ('".$files."')";
 			$db->setQuery($sql);
-			$db->query();
+			$db->execute();
 			$orgFile = array();
 			$error = array();
 			$missing = array();
@@ -180,7 +180,7 @@ class HashcheckControllerHashchecks extends JControllerAdmin
 			}
 			$sql = "UPDATE #__orgfile SET `status` = 1";
 			$db->setQuery($sql);
-			$db->query();
+			$db->execute();
 		}
 		 $t = '<b>'.Jtext::_('COM_HASHCHECK_CURRENT_FILE').'</b>'.str_replace($t_file,"",$t);
 		 
